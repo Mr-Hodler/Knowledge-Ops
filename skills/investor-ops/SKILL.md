@@ -3,17 +3,14 @@ name: investor-ops
 description: >-
   Runs the whole investor and capital lifecycle for one company: build and maintain the canonical
   data room from Founder-OS outputs, find and reach investors (research, fit scoring, cold and warm
-  outreach, pipeline and CRM), and package everything for any third party under scrutiny (fundraise
-  prep, due diligence, board, audit, M&A). Merges the former dataroom-ops and diligence-ops and adds
-  investor sourcing and outreach. Use when the user says: "set up my data room", "sync my Founder-OS
-  outputs", "build an investor list", "who should I raise from", "investor fit", "draft cold outreach
-  to investors", "track my raise pipeline", "prep a data room for a fundraise", "answer this DD
-  questionnaire", "build a board pack", "monthly investor letter", "prepare for our audit", "get ready
-  for M&A". Three mode families: Data Room (Bootstrap, Sync, Audit), Investor Sourcing and Outreach
-  (List, Fit and Scoring, Outreach and Pipeline, Prospect Updates), Diligence and Delivery (Fundraise
-  Prep, DD Support, Board and Investor Delivery, Audit Prep). Per-company and isolated, platform-
-  agnostic, Swiss-calibrated (SICTIC, Innosuisse, Startup Board Academy, Elysium M&A). Never deletes,
-  never edits Founder-OS source files, hard-blocks restricted content and logs access. Never uses em dashes.
+  outreach, pipeline and CRM), and package everything for any third party under scrutiny (fundraise,
+  due diligence, board, audit, M&A). Merges the former dataroom-ops and diligence-ops. Three mode
+  families: Data Room (Bootstrap, Sync, Audit), Investor Sourcing and Outreach (List, Fit and
+  Scoring, Outreach and Pipeline, Prospect Updates), Diligence and Delivery (Fundraise Prep, DD
+  Support, Board and Investor Delivery, Audit Prep). Use when the user says: set up my data room,
+  build an investor list, who should I raise from, investor fit, cold outreach to investors, track
+  my raise pipeline, answer this DD questionnaire, file the board pack, prepare for our audit, get
+  ready for M&A. Per-company and isolated, platform-agnostic. Never deletes. Never uses em dashes.
 ---
 
 # investor-ops

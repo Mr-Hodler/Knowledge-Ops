@@ -2,22 +2,16 @@
 name: functional-hr-ops
 description: >-
   Helps a founder or COO design functional team and organizational structure, optimize how the team
-  operates, plan workforce needs, run hiring, and roll out org change. Use when the user says "how
-  should I structure my team", "do I need to hire", "who should I hire next", "design our org",
-  "should we use a Spotify / Team Topologies / functional / matrix model", "how should these teams
-  work together", "our team feels slow / siloed", "plan our headcount", "write a job description /
-  scorecard", "prepare a brief for candidates", "how do we roll out the reorg", or asks about
-  departments, squads, business units, cross-team operations, sites, work modes, or reporting lines.
-  Five modes: Org Design (structure teams, business units, departments, product lines, sites, work
-  modes, reporting lines, and roles using fitted operating models, scaled by company size), Team Ops
-  and Performance (interaction modes, cross-team workflows, frictions, performance levers), Workforce
-  Planning (need detection, gap analysis, build vs hire, sequencing), Hiring Prep (role definition,
-  job description, scorecard, interview plan, candidate prospectus), and Org Rollout (phased
-  implementation roadmap with success metrics). Owns team and organization architecture; consumes the
-  de-facto functional map from workspace-ops and produces the Organization Model that
-  workspace-ops uses to place files and shape information architecture. Cross-company and
-  operator-shaped. Advisory: it recommends and drafts, it does not make personnel decisions or set
-  pay. Never uses em dashes.
+  operates, plan workforce, run hiring, and roll out org change. Five modes: Org Design (teams,
+  business units, departments, sites, work modes, reporting lines, roles, using fitted operating
+  models scaled by company size), Team Ops and Performance (interaction modes, cross-team workflows,
+  frictions, levers), Workforce Planning (need detection, gap analysis, build vs hire, sequencing),
+  Hiring Prep (role definition, job description, scorecard, interview plan), Org Rollout (phased
+  roadmap with success metrics). Use when the user says: how should I structure my team, do I need
+  to hire, who should I hire next, design our org, how should these teams work together, our team
+  feels siloed, plan our headcount, write a job description or scorecard, how do we roll out the
+  reorg. Produces the Organization Model that workspace-ops consumes. Advisory only: does not make
+  personnel decisions or set pay. Never uses em dashes.
 ---
 
 # functional-hr-ops

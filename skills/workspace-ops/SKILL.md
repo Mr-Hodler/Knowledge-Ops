@@ -1,23 +1,17 @@
 ---
 name: workspace-ops
 description: >-
-  Keeps files and workspaces organized across all of a founder's companies and projects. Use when
-  the user says "scan my Documents / Drive / Notion", "advise on cleanup", "what is messy in my
-  files", "find duplicate / orphan / stale files", "suggest a better folder structure", "derive my
-  file organization standard", "standardize how I organize", "set up the folder structure for a
-  new company", "how should we structure our company information", "map our information architecture",
-  or "what does our file structure say about our team and operations". Operates across local
-  filesystem, Google Drive, Google Workspace, and Notion.
-  Five modes in v1.0, all safe: Scan (read-only inventory plus metadata, duplicate detection, and
-  organizational signals), Advise (a report of suggested fixes plus a replayable, dry-run action
-  plan, zero filesystem changes), Standardize (derive a portable, org-aware file-organization
-  standard from how you already organize), Onboarding (scaffold a compliant structure for a new,
-  empty company target), and Architect (read the information topology, infer the implicit functional
-  and team structure, recommend the target information architecture, and flag operations and
-  performance frictions such as silos, cross-team duplication, and ownerless areas). Execute (safe
-  batch moves) is deferred to v1.1. NEVER deletes: superseded files are moved to a timestamped archive,
-  state is snapshotted before any action, every batch has an undo log, and a blacklist is never
-  touched. The substrate beneath investor-ops. Never uses em dashes in any output.
+  Keeps files and workspaces organized across all of a founder's companies and projects. Works
+  across local filesystem, Google Drive, Google Workspace, and Notion. Five safe modes in v1.0: Scan
+  (read-only inventory, duplicate detection, organizational signals), Advise (suggested fixes plus a
+  replayable dry-run action plan, zero changes), Standardize (derive a portable file-organization
+  standard from how you already organize), Onboarding (scaffold a compliant structure for a new
+  company), Architect (read the information topology, infer the implicit team structure, recommend
+  the target information architecture, flag silos and ownerless areas). Execute (safe batch moves)
+  lands in v1.1. NEVER deletes: superseded files move to a timestamped archive, with snapshots and
+  an undo log. Use when the user says: scan my Documents or Drive, what is messy in my files, find
+  duplicate or stale files, suggest a better folder structure, standardize how I organize, map our
+  information architecture. Never uses em dashes.
 ---
 
 # workspace-ops
