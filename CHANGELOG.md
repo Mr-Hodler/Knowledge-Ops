@@ -2,6 +2,20 @@
 
 All notable changes to Exec-OS are documented here. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2026-07-30
+
+### Added (workspace-ops)
+- **Deliverable Audit mode**, the content-level counterpart to Advise. Advise looks at the filesystem (duplicates, orphans, naming, nesting); Deliverable Audit looks inside the documents at what they claim and whether they still agree with each other. A workspace can be perfectly tidy and still hold two documents answering the same question, a pointer to a file archived last month, and a deadline that has passed. Read-only, changes nothing, proposes rather than merges.
+- Nine checks, each one added because a founder caught it by hand on a real workspace: **measured document overlap** (shared headings and key terms, reported as a figure, never an impression; two or more duplicated major sections is the merge threshold), **missing boundary tables** (the absence of "this document answers X, for Y see Z" is what lets the overlap happen), **stale pointers** to moved or archived files with their correct current target, **manifest completeness** per item against the producing skill's Minimum Output Manifest, **unverified or expired time-bound claims** (deadlines, prices, eligibility rules, market sizes, named role holders with no absolute date or source), **duplicate formats** (the same tracker as both a document and a spreadsheet), **cloud-sync artifacts** (`Copy of ...`, conflicted copies, files that appear in an index but no longer resolve), **page-density checks** on generated documents (a page-break helper once produced a document where a third of the pages were half empty), and **source-material exclusion** (generated content can be regenerated, source cannot, so the two are never judged by the same rules).
+- Conversions and merges are verified **by content, never by exit code**, with encoding normalised first (arrows, `≥`, escaped ampersands, smart quotes), otherwise the check produces false alarms and gets ignored.
+
+### Changed
+- `workspace-ops` is now a **six-mode** skill (Scan, Advise, Deliverable Audit, Standardize, Onboarding, Architect; Execute still deferred to v1.1). Description and mode table updated.
+- Boundary sharpened: Deliverable Audit **reads** generated content and reports on its consistency, but never rewrites or regenerates it. Correcting a stale claim or merging two overlapping documents belongs to the owning Founder-OS skill, under its re-anchor protocol (Founder OS `output-contract.md` C9).
+
+### Context
+Six of the eight rejections logged in the source feedback would have been caught by a mechanical check rather than by a founder reading the output. Human review time is too expensive to spend on manifest assertions, page density, overlap measurement, date verification and stale-pointer scans, so the skill now carries them. Pairs with Founder OS v1.31, which added the boundary table (C7), overlap check (C8) and re-anchor protocol (C9) on the producing side.
+
 ## [0.5.2] - 2026-07-16
 
 ### Added (functional-hr-ops, from the Corporate Organization Theory reference)
