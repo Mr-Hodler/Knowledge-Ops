@@ -2,7 +2,7 @@
 
 ## What the standard is
 
-"Aron's File Organization Standard" is a portable document that captures how files and workspaces should be organized across every company and project. It is derived first from how the user already organizes well, then topped up with best practice where their patterns are thin. It is the shared convention that keeps each new company consistent from day one, and the yardstick Advise aligns to.
+`File-Organization-Standard.md` is a portable document that captures how files and workspaces should be organized across every company and project. It is derived first from how the user already organizes well, then topped up with best practice where their patterns are thin. It is the shared convention that keeps each new company consistent from day one, and the yardstick Advise aligns to.
 
 Default location: a document named `File-Organization-Standard.md` written to the workspace, with its path referenced in config so Advise and Onboarding can read it. It is versioned; bump the version when it changes.
 
