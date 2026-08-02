@@ -2,6 +2,17 @@
 
 All notable changes to Exec-OS are documented here. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.1] - 2026-08-02
+
+### Changed (investor-ops)
+- **The reference standard is now selected at runtime from the configured jurisdiction, not baked in.** The data-room taxonomy was described as a synthesis of Swiss venture references, the seed checklist was titled "SICTIC-grade", and the sector overlays were "calibrated on SICTIC / venture-CH". The consequence: a US, UK, German or Singaporean founder was graded against Swiss angel-network checklists, and the skill presented that as neutral. It is not, and a founder who prepares to the wrong standard looks unprepared to their actual investors.
+- Selection reads the incorporation jurisdiction first, then the primary jurisdiction, then the configured default. Where the jurisdiction is unset or the round is cross-border, the skill **says so and asks once** rather than picking silently. Every readiness claim and package footer now carries `standard applied: <name>`.
+- The Swiss sources are kept in full, relabelled as **one worked example** rather than the base. The same treatment applies to the governance and M&A checklists, where the M&A standard is now correctly stated as the acquirer's own request list.
+- **The axis that varies is named.** The taxonomy itself is largely universal (corporate, financial, commercial, technology, legal, HR). What is jurisdiction-sensitive: which documents investors expect at each stage, the corporate-form documents (articles, bylaws, share classes, cap-table conventions), employment and IP-assignment norms, grant-agency screening, the financial-audit framework and its statutory threshold, and the privacy regime. Only that part is re-derived.
+- Series A and B gain a note that the **lead investor's market** usually governs the document set even when the entity sits elsewhere.
+- Sector overlays are selected by **sector**; only the regulatory annex inside them is jurisdiction-sensitive. Regulators are named as examples rather than defaults.
+- No checklist item was deleted. The skill's own rule survives intact and gets sharper: *completeness is relative to a named checklist*, and the checklist is now **chosen, not assumed**.
+
 ## [0.6.0] - 2026-07-30
 
 ### Added (workspace-ops)

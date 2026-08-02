@@ -35,7 +35,7 @@ Rules that override everything else:
 2. **Never delete.** A superseded or removed file is moved to the configured archive with a timestamp, never trashed. Latest version in place, history in the archive.
 3. **Index everything, copy the finals, stamp metadata.** Sync indexes every relevant deliverable by reference and copies only approved finals into the room, each stamped with `audience`, `lens`, `version`, `source_skill`, `sensitivity`.
 4. **Hard-block restricted by default.** Content tagged `restricted` (employee PII, litigation, key IP, principals/counsel-only) never enters a package or an investor share automatically. Including it needs an explicit per-item override with a logged reason.
-5. **Completeness is relative to a named checklist.** Never claim "ready" in the abstract. Always name the stage or framework ("seed-ready per SICTIC", "Series A gaps: 3", "SOC 2 evidence 80 percent assembled").
+5. **Completeness is relative to a named checklist, and the checklist is chosen, not assumed.** Never claim "ready" in the abstract. Always name the stage and the standard applied ("seed-ready per the standard selected for this jurisdiction", "Series A gaps: 3", "SOC 2 evidence 80 percent assembled"). The standard itself is selected at runtime from the company's jurisdiction (see **Reference standard selection** below), never defaulted to one market.
 6. **Every disclosure is logged.** Who was granted access, to what, at what sensitivity, and when. The access log in `99_DD_QA_&_Trackers/Access_Log` is non-negotiable in a live process.
 7. **Outreach is grounded and consented.** Investor facts (thesis, check size, portfolio) are researched from real sources and cited, never fabricated. Materials sent to investors come from Founder-OS (`narrative-assets-ops`), not re-written here. Respect anti-spam and consent norms; log every touch.
 8. **Platform-agnostic.** The room, pipeline, and packages can live on Notion, Google Drive, SharePoint, or Confluence. Read `dataroom.platform` from config, never hardcode a platform or an ID.
@@ -52,12 +52,46 @@ Rules that override everything else:
 Read `.exec-os-config.yml` (prefer `.exec-os-config.local.yml` if present) before acting. You need:
 
 - **Data Room:** `dataroom.platform`, `dataroom.root_name`, `dataroom.canonical_structure`, `dataroom.metadata_schema`.
-- **Diligence:** `diligence.default_jurisdiction` (CH), `diligence.stage_profiles`, `diligence.sensitivity_tiers`, `diligence.qa_tracker`.
+- **Diligence:** `diligence.default_jurisdiction` (read it, there is no built-in default), `diligence.stage_profiles`, `diligence.sensitivity_tiers`, `diligence.qa_tracker`.
 - **Outreach:** `outreach.sources`, `outreach.pipeline_stages`, `outreach.fit_weights`, `outreach.crm_location`, `outreach.update_cadence` (new block; defaults in `references/investor-sourcing-and-outreach.md`).
-- `linked_founder_os_repos` and the **target company** for this run (source of both deliverables and the materials outreach sends).
+- `linked_founder_os_repos` and the **target company** for this run (source of both deliverables and the materials outreach sends), including the company's **jurisdiction** (Founder-OS `config.company.jurisdictions.incorporation`, then `.primary`), which selects the reference standard.
 - `preferences.visual_artifact` (board packs, readiness dashboards, and pipeline boards may render as HTML) and `preferences.ai_ops_autonomous`.
 
 If a source, platform, or linked repo is unreachable, **degrade gracefully**: do the work you can and report exactly what you could not reach. Never fail the whole run because one source is offline. Full rules: `references/config-and-handoff.md`.
+
+---
+
+## Reference standard selection (jurisdiction-driven, read second)
+
+A data room taxonomy is largely universal. **What an examiner expects inside it is not.** A US seed fund, a UK EIS angel, a German business angel and a Singaporean fund apply different document lists, different corporate-form paperwork, and different employment and IP-assignment norms. Grading a founder against another market's checklist makes them look unprepared to the investors they actually have.
+
+So this skill is **jurisdiction-agnostic and picks the standard at runtime**, the same way Founder-OS `corporate-legal` does. There is **no hardcoded default**.
+
+**Selection rule (mandatory):**
+
+1. Read the company's jurisdiction: the linked Founder-OS company config (`config.company.jurisdictions.incorporation`, then `.primary`), else `diligence.default_jurisdiction` in `.exec-os-config.yml`.
+2. If it maps to a known investor reference body, apply that one.
+3. If it does not, research the local equivalent at runtime (the national VC or business-angel association's diligence or data room guidance) and cite the source.
+4. If the jurisdiction is unset, or the round is cross-border (lead investor in a different market from the entity), **say so and ask once** which market's expectations to grade against. Never pick silently.
+5. State the choice in every readiness claim and every package footer: `standard applied: <name>`.
+
+| Jurisdiction | Investor reference standard (worked examples) |
+| --- | --- |
+| Switzerland (CH) | SICTIC / Swiss ICT Investor Club checklist and the Swiss Angel Investor Handbook, SECA model documentation, Innosuisse screening for grant-adjacent rounds |
+| United States | NVCA model documents and the customary US seed / Series A diligence request list |
+| United Kingdom | BVCA model documents and guidance, plus SEIS / EIS advance-assurance evidence where the round uses it |
+| Germany | German Startups Association model documents, Business Angels Deutschland practice |
+| France | France Invest model documents and practice |
+| Italy | AIFI / Italian Tech Alliance model documents |
+| Singapore | SVCA model documents |
+| Elsewhere | Researched at runtime from the national VC or angel association, flagged explicitly as researched rather than built in |
+
+**Name the axis that varies.** Only the second list is re-derived per run:
+
+- **Stable across jurisdictions:** the folder taxonomy itself (corporate, financial, legal, IP and security, team, product and technology, market and commercial, cap table, traction) and the sector overlays. Do not re-derive these.
+- **Jurisdiction-sensitive:** which documents investors expect at each stage, the corporate-form documents (articles / bylaws / statutes, share classes, cap table conventions, company-register extracts), employment and IP-assignment norms, and the regulatory and privacy annexes (GDPR, UK GDPR, Swiss FADP, CCPA / CPRA, sector regulators).
+
+Where an item from a worked example has **no equivalent** in the selected jurisdiction, mark it `n/a (jurisdiction)` with a one-line reason. Never make a founder chase a document their investors will not ask for.
 
 ---
 
@@ -87,7 +121,7 @@ The library. Builds and keeps the canonical corpus honest. It does not curate ex
 
 - **Bootstrap.** Identify the target company (match a `linked_founder_os_repos` entry). Create the room named per company on `dataroom.platform` using `dataroom.canonical_structure` (do not invent folders). Apply sector overlay(s) by `company_type`. Add `99_DD_QA_&_Trackers` with empty Q&A and access-log placeholders. Idempotent: re-running fills gaps without clobbering. Seed a root index page. See `references/canonical-structure.md`, `references/sector-overlays.md`.
 - **Sync.** Resolve sources from the company's Founder-OS `outputs/`. Classify each deliverable to a canonical folder and a `lens`. Hybrid pickup: index every relevant item by reference, copy only approved finals. Stamp the full `metadata_schema`. Version and archive superseded items (never delete). Deduplicate by hash, report near-duplicates for human judgment. Update the index and manifest. See `references/sync-protocol.md`.
-- **Audit.** Read-only. Pick the yardstick (stage profile plus sector overlay). Detect gaps, stale items, version conflicts, near-duplicates, sensitivity-tag issues. Deliver a prioritized punch list (blocker / should-fix / nice-to-have) and offer to run the fixes. See `references/audit-protocol.md`.
+- **Audit.** Read-only. Pick the yardstick (stage profile plus the jurisdiction's reference standard plus sector overlay) and name it in the output. Detect gaps, stale items, version conflicts, near-duplicates, sensitivity-tag issues. Deliver a prioritized punch list (blocker / should-fix / nice-to-have) and offer to run the fixes. See `references/audit-protocol.md`.
 
 ---
 
@@ -106,10 +140,10 @@ Getting the money in. This is the piece the old two skills did not cover. Ground
 
 Facing whoever examines you. Takes the Family 1 room and curates a gated, logged package for a named audience and checklist. Consumes the room, writes only into `99_DD_QA_&_Trackers`, never edits source files.
 
-- **Fundraise Prep.** Confirm company and stage (stage drives the checklist: seed is SICTIC-grade, Series A/B heavier, M&A is Elysium-grade). Consume the Family 1 Audit as the single gap source of truth (do not recompute gaps). Gate sensitivity, build the access-filtered investor view plus optional export, open the access-log entry, deliver a readiness summary ("<stage>-ready except N items"). See `references/checklists.md`, `references/packaging-and-access.md`.
+- **Fundraise Prep.** Confirm company, stage, and jurisdiction. Stage drives the depth (seed light, Series A/B heavier, M&A the full superset); jurisdiction drives which named standard applies, per **Reference standard selection**. Consume the Family 1 Audit as the single gap source of truth (do not recompute gaps). Gate sensitivity, build the access-filtered investor view plus optional export, open the access-log entry, deliver a readiness summary ("<stage>-ready except N items"). See `references/checklists.md`, `references/packaging-and-access.md`.
 - **DD Support.** Ingest a received questionnaire (legal / financial / tech / commercial) or start from the built-in stage checklist. Map each question to evidence in the room, status it (answered / partial / missing / N/A), draft answers grounded only in room evidence, gate and log every disclosure, maintain the Q&A and evidence trackers. See `references/qa-and-evidence.md`.
 - **Board & Investor Delivery.** The board pack and investor letter are **authored and assembled by Founder-OS `narrative-assets-ops`**, not here. investor-ops **delivers** them: file the finished pack in the data room, audience-gate (board may see `confidential`, never `restricted` unless the board owns it and it is logged), log distribution, and manage the recurring cadence (monthly letter, quarterly board). If the pack is missing or stale, route to `narrative-assets-ops`. It does not author or re-derive content. See `references/reporting.md`.
-- **Audit Prep.** Name the framework (financial audit, SOC 2, ISO 27001, GDPR / Swiss FADP), map controls to evidence, assemble the evidence index, flag gaps, deliver a readiness percentage per control area. See `references/checklists.md`.
+- **Audit Prep.** Name the framework (financial audit, SOC 2, ISO 27001, and the privacy regime that actually applies: GDPR, UK GDPR, Swiss FADP, CCPA / CPRA, or the local equivalent), map controls to evidence, assemble the evidence index, flag gaps, deliver a readiness percentage per control area. See `references/checklists.md`.
 
 ---
 
@@ -119,7 +153,7 @@ Facing whoever examines you. Takes the Family 1 room and curates a gated, logged
 - **Do not reorganize the raw filesystem.** Cleaning up Documents/Drive structure is `workspace-ops`. investor-ops touches only the canonical data room, the pipeline, and the trackers.
 - **Do not design the team or org.** Headcount, hiring, and org structure are `functional-hr-ops`.
 - **Do not give legal advice.** For deep contract review or a formal compliance opinion, assemble the evidence and defer the judgment to the relevant legal skill or counsel.
-- **Never delete a file, never include restricted content silently, never claim readiness without naming the checklist, never fabricate investor data.**
+- **Never delete a file, never include restricted content silently, never claim readiness without naming the checklist and the jurisdiction it was selected for, never grade a founder against another market's standard, never fabricate investor data.**
 
 ---
 
@@ -136,7 +170,7 @@ Facing whoever examines you. Takes the Family 1 room and curates a gated, logged
 
 - Per-company isolation holds across room, pipeline, and packages; no cross-company leakage.
 - Every room item carries the full metadata schema including a sensitivity tier; Sync copied only finals and archived (never deleted) superseded versions.
-- Audit and packages measured completeness against a **named** stage profile or framework.
+- Audit and packages measured completeness against a **named** stage profile or framework, with the reference standard selected from the company's jurisdiction, stated as `standard applied: <name>`, and never defaulted to one market. Cross-border or unknown jurisdiction was surfaced and asked once, not resolved silently.
 - Investor list and scores cite their sources; unknowns are flagged, nothing fabricated. Outreach materials came from Founder-OS, not re-written here.
 - Pipeline reflects every logged touch; the CRM is current and the next action per live investor is set.
 - No `restricted` item was included or shared without an explicit, logged override; every disclosure is in the access log.
@@ -147,12 +181,12 @@ Facing whoever examines you. Takes the Family 1 room and curates a gated, logged
 
 ## Reference files
 
-- `references/canonical-structure.md` - the canonical data room taxonomy, what each folder holds, per-stage subsets (SICTIC, Startup Board Academy, Elysium Lab).
+- `references/canonical-structure.md` - the jurisdiction-neutral data room taxonomy, what each folder holds, per-stage subsets, and which parts are re-derived per jurisdiction. Swiss/CH sources (SICTIC, Startup Board Academy, Elysium Lab) appear as one worked example.
 - `references/sector-overlays.md` - additive sector overlays (saas, hardware, crypto, fintech, ai) that extend base folders and the DD checklist by company type.
 - `references/sync-protocol.md` - hybrid index-plus-copy mechanics, metadata stamping, versioning and archive, hashing and dedup.
 - `references/audit-protocol.md` - gap / stale / conflict / duplicate detection, freshness windows, report format.
 - `references/investor-sourcing-and-outreach.md` - investor list sources, the fit-scoring rubric, pipeline stages, the CRM tracker schema, outreach templates and cadence, consent and anti-spam. (new)
-- `references/checklists.md` - built-in stage DD checklists and audit frameworks (financial, SOC 2, ISO 27001, GDPR), mapped to canonical folders.
+- `references/checklists.md` - the jurisdiction-neutral stage DD spine, the CH worked instantiation of it, how the applied standard is selected at runtime, and audit frameworks (financial, SOC 2, ISO 27001, privacy), mapped to canonical folders.
 - `references/packaging-and-access.md` - hybrid delivery (access-filtered view plus export bundle), sensitivity enforcement, override-with-reason, the access log.
 - `references/qa-and-evidence.md` - the DD Q&A tracker workflow, questionnaire ingestion, evidence mapping and answer drafting.
 - `references/reporting.md` - board pack and investor letter templates, on-demand and scheduled generation, pulling from the metrics dashboard.
