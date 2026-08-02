@@ -2,6 +2,15 @@
 
 All notable changes to Exec-OS are documented here. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.2] - 2026-08-02
+
+### Added (investor-ops)
+- **Competition & Grant Submission mode.** All existing profiles describe an examiner who **pulls** documents from a data room, on their own schedule, and can ask a follow-up question. A competition jury or a grant evaluator does neither: they receive **one self-contained document plus named annexes**, at a **hard deadline**, score it against a **published weighted rubric**, and compare it **against the other submissions in the same round**. Anything not in the document does not exist, and a strong company loses to a weaker one that answered the form. Preparing for a jury as if it were an investor was the gap.
+- The mode works the rubric rather than the room: retrieve the call's current criteria, weights, eligibility rules and annex list at runtime with an absolute date (forms change between cycles, so a rubric is never assumed); **check eligibility before writing anything**, because one rule invalidates the entire submission and it is the cheapest thing to verify first; order sections to match the criteria and answer each in the programme's own vocabulary; allocate effort to weight, since founders routinely overwrite the section they enjoy and underwrite the one that scores; and answer the sector overlay, not only the common core.
+- **The annexes are part of the score**, and a missing one is usually a formal rejection rather than a lost point: financial data in the programme's own template, the impact self-assessment output sheet, the risk register pre and post mitigation, CVs, corporate and register documents, signed letters of intent, filed statements with a bank confirmation, and third-party opinions where a claim needs backing.
+- **The two published grounds for rejection are named**, because public funders publish their decisions and the same two recur: **innovation content** assessed against the state of the art and against solutions already available (a proposal reading as an integration of existing technologies and libraries is rejected as not advancing the state of the art), and **implementation potential and value creation** (market projections too large and unspecific, competitive analysis not detailed enough, positioning unclear). Both are graded relative to the other submissions, so adequate is not a passing standard.
+- The mode **assembles and does not author**: content is cited from Founder-OS (`market-discovery` incl. Mode 2 prior art, `market-intel-gap`, `business-validation`, `business-model`, the new `financial-planning` and `impact-sustainability`, `risk-strategy`, `product-design`, `ip-legal`, `narrative-assets-ops`). The decision letter is filed next to the submission: a rejection names the criteria you failed and is the best input to the next attempt.
+
 ## [0.6.1] - 2026-08-02
 
 ### Changed (investor-ops)

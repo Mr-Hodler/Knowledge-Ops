@@ -36,6 +36,59 @@ Light depth at this stage in every market, but the cap table and the IP ownershi
 
 **Grant-agency screening (optional, only where the founder is eligible).** Public innovation funders add emphasis on innovation substance, scientific and technical merit, and the team's capacity to execute; map these to 06_Product and 05_Team. Worked example (CH): Innosuisse. Equivalents exist in most markets (Innovate UK, SBIR / STTR in the US, the EIC Accelerator in the EU, Bpifrance in FR), so name the one the founder is actually applying to, or mark the item `n/a (jurisdiction)` if there is none.
 
+## Competition, award or grant application
+
+**A jury is not an investor, and preparing for one as if it were is the most common mistake at this stage.** Every other profile in this file describes an examiner who **pulls** documents from a room, on their own schedule, and can ask a follow-up question. A competition jury or a grant evaluator does neither. They receive **one self-contained submission**, at a fixed deadline, score it against a **published weighted rubric**, and compare it **against the other submissions in the same round**. Anything not in the document does not exist, and a strong company can lose to a weaker one that answered the form.
+
+Four differences that change what you produce:
+
+| | Investor round | Competition / grant |
+|---|---|---|
+| Shape | a data room, browsed | **one document plus named annexes**, read start to finish |
+| Timing | rolling, follow-up questions possible | **hard deadline**, no second chance in this round |
+| Standard | the investor's own norms | a **published rubric with weights**, usually per criterion |
+| Comparison | against your own claims | **against the other applicants**, explicitly |
+
+**Standard applied:** the programme's own published criteria, retrieved at runtime. Never assume a rubric. **Verify the deadline, the eligibility rules and the annex list against the current call with an absolute date before building anything**, because programmes change their forms between cycles and a criterion that moved is a criterion you will miss.
+
+### Work the rubric, not the room
+
+1. **Retrieve the published criteria and their weights**, and build the submission's section order to match them. An evaluator scoring twelve criteria in sequence should not have to hunt. Where the programme publishes no weights, say so and treat the criteria as equal.
+2. **One section per criterion, answered in its own words.** Reuse the programme's vocabulary rather than your internal names for things. This is not cosmetic: an evaluator ticking a box looks for the term on the form.
+3. **Map the weight to your effort.** A criterion carrying 12% deserves roughly twelve times the space of a 1% one. Founders routinely overwrite the section they enjoy and underwrite the one that scores.
+4. **Answer the vertical overlay, not just the common core.** Most rubrics add requirements by sector (software programmes ask for alpha or beta testing evidence and digital acquisition metrics; life-science ones for a regulatory and a clinical roadmap plus reimbursement; industrial ones for early pilots and field tests). Missing an overlay item reads as not having understood the call.
+5. **Check eligibility before writing a word.** Entity age and size, jurisdiction or member-state rules, consortium shape, co-funding requirement, whether a university host is required, sector scope, and whether prior funding from the same body excludes you. **A single eligibility rule invalidates the entire submission**, and it is the cheapest thing to check first.
+
+### The annexes are part of the score
+
+Grant and competition forms almost always mandate annexes, and a missing one is usually a formal rejection rather than a lost point. Assemble and verify each against the current call:
+
+- The **financial data** in the programme's own template if it supplies one, filled in its own line items and codes, not a generic export from your own model.
+- The **impact or sustainability self-assessment output sheet** where the rubric scores impact. Increasingly standard and frequently forgotten.
+- The **risk register**, on the programme's template where one is supplied, pre and post mitigation.
+- **CVs** of the core team, in the requested format.
+- **Corporate documents**: register extract, share register or cap table, articles or statutes.
+- **Letters of intent or support** from named partners or customers, signed.
+- **Filed financial statements** and a bank confirmation where the programme asks for financial standing.
+- **Third-party opinions** where a claim needs backing: a legal opinion, patent or freedom-to-operate research.
+
+Every claim in the narrative should have a counter-signed document behind it. That is the difference between a submission that reads well and one that survives scrutiny.
+
+### Two failure modes worth naming, because they are the published grounds for rejection
+
+Public funders publish their decisions, and the same two reasons recur:
+
+- **Innovation content.** Assessed against the current state of the art **and** against solutions already available for the same need. A proposal that reads as an **integration of existing technologies and libraries** gets rejected on the grounds that it is unclear how it advances the state of the art. The defence is the prior-art work: name the closest existing work, state the delta honestly, and separate what is genuinely new from what is assembly. Founder-OS `market-discovery` Mode 2 produces exactly this, and its two-column honesty split is what an evaluator is testing for.
+- **Implementation potential and value creation.** Assessed on market potential, competitiveness, marketing strategy, freedom to operate, the extent of value created and the size of the user group. The recurring rejection is that **market-size projections are too large and unspecific and the competitive analysis is not detailed enough**, leaving the positioning unclear. A top-down billion-dollar market figure with no bottom-up build is read as a lack of rigour, not as ambition.
+
+Both are graded **relative to the other submissions in the round**, so "adequate" is not a passing standard.
+
+### Where the content comes from
+
+This profile assembles, it does not author. Pull from Founder-OS and cite: `market-discovery` (market structure, and Mode 2 for the prior-art and novelty section), `market-intel-gap` (competitive analysis and gaps), `business-validation` (problem, ICP, validation evidence), `business-model` (revenue model, unit economics, the value-creation roadmap and the with versus without-funding counterfactual), `financial-planning` (the statements, the cost breakdown with its evidence chain, and the budget in the funder's own categories), `impact-sustainability` (the impact section and its self-assessment annex), `risk-strategy` (the register with residual scoring), `product-design` (maturity level, certification roadmap, validation evidence), `ip-legal` (the IP position and the freedom-to-operate screen), and `narrative-assets-ops` (the executive summary and the narrative assembly).
+
+**After the decision, whatever it is, file it.** A rejection letter names the criteria you failed and is the single most useful input to the next attempt. Keep it in the room with the submission it belongs to.
+
 ## Governance / board
 
 **Standard applied:** the governance reference of the selected jurisdiction (the national director or board institute, VC association governance guidance, or the investor's own board pack norms).
