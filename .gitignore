@@ -24,3 +24,9 @@ _archive/
 node_modules/
 dist/
 *.log
+*.bak
+*.bak[0-9]
+*.tmp
+__pycache__/
+*.pyc
+.obsidian/
