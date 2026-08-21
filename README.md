@@ -93,7 +93,7 @@ These are intentionally *not* built yet. The repo ships the three skills above f
 This repo is a self-contained Claude plugin (and a one-plugin marketplace), so it installs directly. The three skills ship as one plugin; each also ships as a standalone `.skill` for one-click install.
 
 ```
-Exec-OS-Repo/                      # repo root = the plugin AND the marketplace
+Exec-OS/                           # repo root = the plugin AND the marketplace
 ├── .claude-plugin/
 │   ├── plugin.json                      # plugin manifest (bundles all three skills)
 │   └── marketplace.json                 # marketplace manifest listing this plugin
@@ -129,7 +129,7 @@ See [SETUP.md](SETUP.md). In short: connect the platform where your data room li
 
 ### Option A - one-click `.skill` (Cowork)
 
-Open the relevant `.skill` file (e.g. `skills/investor-ops.skill`) and use **Save skill**.
+Open the relevant `.skill` file from [`dist/`](./dist) (e.g. `dist/investor-ops.skill`) and use **Save skill**. `skills/` holds the source; `dist/` holds the packages.
 
 ### Option B - marketplace (Claude Code or Cowork)
 
@@ -138,7 +138,7 @@ Open the relevant `.skill` file (e.g. `skills/investor-ops.skill`) and use **Sav
 /plugin install exec-os@exec-os
 ```
 
-The first command registers this repo as a marketplace; the second installs the plugin with all four skills.
+The first command registers this repo as a marketplace; the second installs the plugin with all three skills.
 
 ### Option C - manual / local
 

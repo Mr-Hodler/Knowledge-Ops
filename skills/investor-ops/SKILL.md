@@ -6,8 +6,8 @@ description: >-
   outreach, pipeline and CRM), and package everything for any third party under scrutiny (fundraise,
   due diligence, board, audit, M&A). Merges the former dataroom-ops and diligence-ops. Three mode
   families: Data Room (Bootstrap, Sync, Audit), Investor Sourcing and Outreach (List, Fit and
-  Scoring, Outreach and Pipeline, Prospect Updates), Diligence and Delivery (Fundraise Prep, DD
-  Support, Board and Investor Delivery, Audit Prep). Use when the user says: set up my data room,
+  Scoring, Outreach and Pipeline, Prospect Updates), Diligence and Delivery (Fundraise Prep, Competition and
+  Grant Submission, DD Support, Board and Investor Delivery, Audit Prep). Use when the user says: set up my data room,
   build an investor list, who should I raise from, investor fit, cold outreach to investors, track
   my raise pipeline, answer this DD questionnaire, file the board pack, prepare for our audit, get
   ready for M&A. Per-company and isolated, platform-agnostic. Never deletes. Never uses em dashes.

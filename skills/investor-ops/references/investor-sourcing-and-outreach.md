@@ -8,7 +8,7 @@ Getting the money in: build the target list, score fit, run outreach, track the 
 
 ```yaml
 outreach:
-  crm_location: "10_Fundraise/Investor_Pipeline"   # where the living tracker lives in the data room
+  crm_location: "08_Cap_Table_&_Financing/Investor_Pipeline"   # inside the canonical 00-09 tree; Bootstrap never invents folders, so a path outside it is never created
   sources:                                         # where the investor list is built from
     - warm_network        # the founder's own contacts and prior-round investors (highest priority)
     - directories         # VC and angel directories, syndicate lists
