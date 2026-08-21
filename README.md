@@ -166,3 +166,13 @@ Version history lives in [CHANGELOG.md](CHANGELOG.md). To propose changes, see [
 ## License
 
 MIT. See [LICENSE](LICENSE). Copyright (c) 2026 Aron Clementi.
+
+---
+
+## The manual
+
+**Download [`guide/exec-os-explorer.html`](./guide/exec-os-explorer.html) and open it in a browser.** GitHub shows HTML as source, so use the download button. One self-contained file, no dependencies, and it ships inside every skill package.
+
+It is organised by **the job you are doing**, not by the skill. Four tabs: the 6 jobs with their chains, the rules that make each work and what breaks it · the 3 skills as cards with clickable boundaries · how it holds together · a glossary of 48 terms, one line each.
+
+**For everything about one skill, open its `SKILL.md`.** The explorer is how they fit together and deliberately does not restate them.

@@ -31,7 +31,7 @@ SRC, OUT = ROOT / "skills", ROOT / "dist"
 
 # archive path -> source dir. Bundled into EVERY package so repo-root-relative
 # citations resolve when a skill is installed on its own.
-SHARED: dict = {}   # every reference is skill-local
+SHARED = {"guide": ROOT / "guide"}   # the explorer ships with every skill
 
 SKIP_NAMES = {".DS_Store", "Thumbs.db"}
 SKIP_DIRS = {"__pycache__", ".ipynb_checkpoints"}

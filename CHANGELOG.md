@@ -2,6 +2,17 @@
 
 All notable changes to Exec-OS are documented here. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.7.0] — 2026-08 — the manual is a page, organised by the job
+
+The handbook restated in prose what each `SKILL.md` already says: a second copy of the same content, maintained by hand, that nobody read end to end. And it answered the wrong question. Nobody arrives asking what one skill does; they arrive with a job, and the question is which skills, in what order, handing what to each other.
+
+**`guide/exec-os-explorer.html` replaces it.** Four tabs. **6 jobs**, each with the chain and what each step hands to the next, **the rules that make it work**, and what breaks it. **3 skill cards** answering the same questions so they compare, with the *not here, go to* redirects clickable so boundaries are navigable rather than asserted. **How it holds together**: the shared standards every skill in this repo reads, what counts as knowing something, who owns what, and the failure modes. **A glossary of 48 terms**, one line each, grouped.
+
+The page is generated from `scripts/explorer/build.py` plus a `data.json`. **The build script and the two templates are byte-identical in all five repos**; only the data differs. Editing the HTML by hand is a mistake the header warns about.
+
+The long-form handbook is archived under `_OLD/2026-08/`.
+
+---
 ## [0.6.2] - 2026-08-02
 
 ### Added (investor-ops)
