@@ -149,7 +149,12 @@ def build(name: str) -> Path:
             return
         if arc in written:
             return
-        z.write(f, arc)
+        # Fixed timestamp: a rebuild with no content change must produce an
+        # identical file, or every build shows up as a diff in git.
+        info = zipfile.ZipInfo(arc, date_time=(1980, 1, 1, 0, 0, 0))
+        info.compress_type = zipfile.ZIP_DEFLATED
+        info.external_attr = 0o644 << 16
+        z.writestr(info, f.read_bytes())
         written.add(arc)
 
     with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED) as z:
